@@ -9,8 +9,8 @@ RPG Game
 ========
 
 Intructions: 
-Get to the Living Room with a key and a pistol in your inventory!
-Avoid the monsters!
+Get to the Living Room with the key in your inventory!
+Avoid the monsters, unless you're well prepared!
 
 Commands:
   go [direction]
