@@ -24,6 +24,7 @@ def showStatus():
     print('You are in the ' + currentRoom)
     #print the current inventory
     print('Inventory : ' + str(inventory))
+    #print available directions
     for direction in rooms[currentRoom]['directions']:
         print("The %s is %s." % (rooms[currentRoom]['directions'][direction], direction))
 
@@ -35,7 +36,7 @@ def showStatus():
 #an inventory, which is initially empty
 inventory = []
 
-#a dictionary linking a room to other rooms
+#a dictionary linking a room to other rooms, as well as holding an item for that room
 rooms = {
     'Hall' : { 
         'directions': {
@@ -87,7 +88,7 @@ currentRoom = 'Hall'
 
 showInstructions()
 
-#loop forever
+#loop until exit or ctrl-c
 while True:
     try:
         showStatus()
@@ -131,7 +132,7 @@ while True:
         if move[0] == 'exit':
             break
 
-        #player loses if they enter a room with a monster
+        #player loses if they enter a room with a monster, without having a pistol and armor
         if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
             if 'pistol' in inventory and 'armor' in inventory:
                 print('Your armor protects you as a monster attacks!  You slay the beast with your pistol.')
@@ -141,7 +142,7 @@ while True:
                 print('A monster has got you... GAME OVER!')
                 break
         
-        #player wins if they get to the garden with a key and a pistol
+        #player wins if they get to the garden with the key
         if currentRoom == 'Living Room' and 'key' in inventory:
             print('You escaped the house...YOU WIN!')
             break
