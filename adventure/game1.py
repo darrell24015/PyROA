@@ -34,35 +34,47 @@ inventory = []
 #a dictionary linking a room to other rooms
 rooms = {
     'Hall' : { 
-        'south' : 'Kitchen',
-        'east' : 'Dining Room',
-        'north' : 'Bathroom',
+        'directions': {
+            'south' : 'Kitchen',
+            'east' : 'Dining Room',
+            'north' : 'Bathroom'
+        },
         'item' : 'key'
     },
     'Kitchen' : {
-        'north' : 'Hall',
-        'east' : 'Garden',
+        'directions': {
+            'north' : 'Hall',
+            'east' : 'Garden'
+        },
         'item' : 'monster'
     },
     'Dining Room' : {
-        'west' : 'Hall',
-        'south' : 'Garden',
-        'north' : 'Living Room',
+        'directions': {
+            'west' : 'Hall',
+            'south' : 'Garden',
+            'north' : 'Living Room'
+        },
         'item' : 'pistol'
     },
     'Garden' : {
-        'west' : 'Kitchen',
-        'north' : 'Dining Room',
+        'directions': {
+            'west' : 'Kitchen',
+            'north' : 'Dining Room'
+        },
         'item' : 'monster'
     },
     'Bathroom' : {
-        'south' : 'Hall',
-        'east' : 'Living Room',
+        'directions': {
+            'south' : 'Hall',
+            'east' : 'Living Room'
+        },
         'item' : 'armor'
     },
     'Living Room' : {
-        'west' : 'Bathroom',
-        'south' : 'Dining Room'
+        'directions': {
+            'west' : 'Bathroom',
+            'south' : 'Dining Room'
+        }
     }
 }
 
@@ -89,9 +101,9 @@ while True:
     #if they type 'go' first
     if move[0] == 'go':
         #check that they are allowed wherever they want to go
-        if move[1] in rooms[currentRoom]:
+        if move[1] in rooms[currentRoom]['directions']:
             #set the current room to the new room
-            currentRoom = rooms[currentRoom][move[1]]
+            currentRoom = rooms[currentRoom]['directions'][move[1]]
         #there is no door (link) to the new room
         else:
             print('You can\'t go that way!')
