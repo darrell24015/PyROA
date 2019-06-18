@@ -24,6 +24,9 @@ def showStatus():
     print('You are in the ' + currentRoom)
     #print the current inventory
     print('Inventory : ' + str(inventory))
+    for direction in rooms[currentRoom]['directions']:
+        print("The %s is %s." % (rooms[currentRoom]['directions'][direction], direction))
+
     #print an item if there is one
     if "item" in rooms[currentRoom]:
         print('You see a ' + rooms[currentRoom]['item'])
