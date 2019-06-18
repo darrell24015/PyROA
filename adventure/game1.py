@@ -15,6 +15,7 @@ Avoid the monsters!
 Commands:
   go [direction]
   get [item]
+  exit 
 ''')
 
 def showStatus():
@@ -122,6 +123,10 @@ while True:
         else:
             #tell them they can't get it
             print('Can\'t get ' + move[1] + '!')
+
+    #if they want to exit the game
+    if move[0] == 'exit':
+        break
 
     #player loses if they enter a room with a monster
     if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
