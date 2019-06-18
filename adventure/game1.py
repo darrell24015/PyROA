@@ -130,11 +130,16 @@ while True:
 
         #player loses if they enter a room with a monster
         if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
-            print('A monster has got you... GAME OVER!')
-            break
+            if 'pistol' in inventory and 'armor' in inventory:
+                print('Your armor protects you as a monster attacks!  You slay the beast with your pistol.')
+                # Remove the monster from the room
+                del rooms[currentRoom]['item']
+            else:
+                print('A monster has got you... GAME OVER!')
+                break
         
         #player wins if they get to the garden with a key and a pistol
-        if currentRoom == 'Living Room' and 'key' in inventory and 'pistol' in inventory:
+        if currentRoom == 'Living Room' and 'key' in inventory:
             print('You escaped the house...YOU WIN!')
             break
 
